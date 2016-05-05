@@ -1,0 +1,13 @@
+PODS:
+  - Alamofire (3.3.1)
+  - BNRCoreDataStack (1.2.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.3)
+  - BNRCoreDataStack
+
+SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  BNRCoreDataStack: 8b4102fe383c472141ffe5e31cc93e56dd80e1d2
+
+COCOAPODS: 0.39.0
