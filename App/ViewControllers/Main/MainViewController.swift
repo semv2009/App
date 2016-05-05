@@ -26,6 +26,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ds")
+        
+        
         let moc = stack!.newBackgroundWorkerMOC()
         do{
         let person = try  Accountant.allInContext(moc)
