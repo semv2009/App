@@ -24,9 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case .Success(let stack):
                 self.coreDataStack = stack
                 self.createDB()
-                dispatch_async(dispatch_get_main_queue()){
-                    let mainViewController = MainViewController(coreDataStack: stack)
-                    self.window?.rootViewController = UINavigationController(rootViewController: mainViewController)
+                dispatch_async(dispatch_get_main_queue()) {
+                    let mainViewController = MainTabViewController(coreDataStack: self.coreDataStack!)
+                    self.window?.rootViewController = mainViewController
                 }
                 
             case .Failure(let error):
@@ -42,11 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let moc = coreDataStack!.newBackgroundWorkerMOC()
         do {
             try moc.performAndWaitOrThrow {
-                let person = Leadership(managedObjectContext: moc)
-                person.fullName = "Sam"
-                person.salary = 35000
-                person.beginBusinessHours = NSDate()
-                person.endBusinessHours = NSDate()
+//                let person =  Accountant(managedObjectContext: moc)
+//                person.fullName = "testB"
+//                let person1 =  Leadership(managedObjectContext: moc)
+//                person1.fullName = "testB"
+//                let person2 =  FellowWorker(managedObjectContext: moc)
+//                person2.fullName = "testB"
                 try moc.saveContextAndWait()
             }
         } catch {
@@ -57,4 +58,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 }
-

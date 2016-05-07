@@ -1,8 +1,8 @@
 //
 //  Employee.swift
-//  TestApp
+//  App
 //
-//  Created by developer on 04.05.16.
+//  Created by developer on 08.05.16.
 //  Copyright © 2016 developer. All rights reserved.
 //
 
@@ -15,6 +15,7 @@ class Employee: Person {
     @NSManaged var endLunchTime: NSDate?
     @NSManaged var workplace: NSNumber?
     
+    // MARK: - CoreDataModelable
     override class var entityName: String {
         return "Employee"
     }

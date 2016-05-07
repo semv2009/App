@@ -1,8 +1,8 @@
 //
 //  Leadership.swift
-//  TestApp
+//  App
 //
-//  Created by developer on 04.05.16.
+//  Created by developer on 08.05.16.
 //  Copyright © 2016 developer. All rights reserved.
 //
 
@@ -18,4 +18,5 @@ class Leadership: Person {
     override class var entityName: String {
         return "Leadership"
     }
+
 }

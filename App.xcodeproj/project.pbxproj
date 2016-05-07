@@ -14,12 +14,22 @@
 		8B4A97B01CDB33E4007F3439 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4A97AE1CDB33E4007F3439 /* LoadingViewController.xib */; };
 		8B4A97B81CDB3412007F3439 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97B61CDB3412007F3439 /* MainViewController.swift */; };
 		8B4A97B91CDB3412007F3439 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4A97B71CDB3412007F3439 /* MainViewController.xib */; };
-		8B4A97CC1CDB3447007F3439 /* Accountant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97C61CDB3447007F3439 /* Accountant.swift */; };
-		8B4A97CD1CDB3447007F3439 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97C71CDB3447007F3439 /* Employee.swift */; };
-		8B4A97CE1CDB3447007F3439 /* FellowWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97C81CDB3447007F3439 /* FellowWorker.swift */; };
-		8B4A97CF1CDB3447007F3439 /* Leadership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97C91CDB3447007F3439 /* Leadership.swift */; };
-		8B4A97D01CDB3447007F3439 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97CA1CDB3447007F3439 /* Person.swift */; };
 		8B4A97D41CDB3581007F3439 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97D21CDB3581007F3439 /* Model.xcdatamodeld */; };
+		8B4A97DC1CDB4444007F3439 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97DA1CDB4444007F3439 /* MainTabViewController.swift */; };
+		8B4A97DD1CDB4444007F3439 /* MainTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4A97DB1CDB4444007F3439 /* MainTabViewController.xib */; };
+		8B4A97E31CDB4BFE007F3439 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97E11CDB4BFE007F3439 /* GalleryViewController.swift */; };
+		8B4A97E41CDB4BFE007F3439 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4A97E21CDB4BFE007F3439 /* GalleryViewController.xib */; };
+		8B4A97E71CDB4C1D007F3439 /* ServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97E51CDB4C1D007F3439 /* ServiceViewController.swift */; };
+		8B4A97E81CDB4C1D007F3439 /* ServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4A97E61CDB4C1D007F3439 /* ServiceViewController.xib */; };
+		8B4A97EB1CDB4C4B007F3439 /* PersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A97E91CDB4C4B007F3439 /* PersonTableViewController.swift */; };
+		8B4A97EC1CDB4C4B007F3439 /* PersonTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4A97EA1CDB4C4B007F3439 /* PersonTableViewController.xib */; };
+		8B74E6821CDE817D008985CC /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74E6801CDE817D008985CC /* Person.swift */; };
+		8B74E6861CDE81CB008985CC /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74E6841CDE81CB008985CC /* Employee.swift */; };
+		8B74E68A1CDE8208008985CC /* Accountant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74E6881CDE8208008985CC /* Accountant.swift */; };
+		8B74E68E1CDE8225008985CC /* FellowWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74E68C1CDE8225008985CC /* FellowWorker.swift */; };
+		8B74E6921CDE8243008985CC /* Leadership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74E6901CDE8243008985CC /* Leadership.swift */; };
+		8B74E6951CDE887B008985CC /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B74E6931CDE887B008985CC /* PersonTableViewCell.swift */; };
+		8B74E6961CDE887B008985CC /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B74E6941CDE887B008985CC /* PersonTableViewCell.xib */; };
 		9A7034D0FECA622A88A37725 /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27819D767AD0DEF8D8380DD9 /* Pods_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,12 +44,22 @@
 		8B4A97AE1CDB33E4007F3439 /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingViewController.xib; path = ViewControllers/Loading/LoadingViewController.xib; sourceTree = "<group>"; };
 		8B4A97B61CDB3412007F3439 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ViewControllers/Main/MainViewController.swift; sourceTree = "<group>"; };
 		8B4A97B71CDB3412007F3439 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainViewController.xib; path = ViewControllers/Main/MainViewController.xib; sourceTree = "<group>"; };
-		8B4A97C61CDB3447007F3439 /* Accountant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Accountant.swift; path = Model/Accountant.swift; sourceTree = "<group>"; };
-		8B4A97C71CDB3447007F3439 /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Employee.swift; path = Model/Employee.swift; sourceTree = "<group>"; };
-		8B4A97C81CDB3447007F3439 /* FellowWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FellowWorker.swift; path = Model/FellowWorker.swift; sourceTree = "<group>"; };
-		8B4A97C91CDB3447007F3439 /* Leadership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Leadership.swift; path = Model/Leadership.swift; sourceTree = "<group>"; };
-		8B4A97CA1CDB3447007F3439 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = Model/Person.swift; sourceTree = "<group>"; };
 		8B4A97D31CDB3581007F3439 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8B4A97DA1CDB4444007F3439 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainTabViewController.swift; path = ViewControllers/TabBar/MainTabViewController.swift; sourceTree = "<group>"; };
+		8B4A97DB1CDB4444007F3439 /* MainTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainTabViewController.xib; path = ViewControllers/TabBar/MainTabViewController.xib; sourceTree = "<group>"; };
+		8B4A97E11CDB4BFE007F3439 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryViewController.swift; path = ViewControllers/Gallery/GalleryViewController.swift; sourceTree = "<group>"; };
+		8B4A97E21CDB4BFE007F3439 /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GalleryViewController.xib; path = ViewControllers/Gallery/GalleryViewController.xib; sourceTree = "<group>"; };
+		8B4A97E51CDB4C1D007F3439 /* ServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceViewController.swift; path = ViewControllers/Service/ServiceViewController.swift; sourceTree = "<group>"; };
+		8B4A97E61CDB4C1D007F3439 /* ServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ServiceViewController.xib; path = ViewControllers/Service/ServiceViewController.xib; sourceTree = "<group>"; };
+		8B4A97E91CDB4C4B007F3439 /* PersonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonTableViewController.swift; path = ViewControllers/List/PersonTableViewController.swift; sourceTree = "<group>"; };
+		8B4A97EA1CDB4C4B007F3439 /* PersonTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonTableViewController.xib; path = ViewControllers/List/PersonTableViewController.xib; sourceTree = "<group>"; };
+		8B74E6801CDE817D008985CC /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Person.swift; path = Model/Person.swift; sourceTree = "<group>"; };
+		8B74E6841CDE81CB008985CC /* Employee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Employee.swift; path = Model/Employee.swift; sourceTree = "<group>"; };
+		8B74E6881CDE8208008985CC /* Accountant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Accountant.swift; path = Model/Accountant.swift; sourceTree = "<group>"; };
+		8B74E68C1CDE8225008985CC /* FellowWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FellowWorker.swift; path = Model/FellowWorker.swift; sourceTree = "<group>"; };
+		8B74E6901CDE8243008985CC /* Leadership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Leadership.swift; path = Model/Leadership.swift; sourceTree = "<group>"; };
+		8B74E6931CDE887B008985CC /* PersonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonTableViewCell.swift; path = Views/Cell/PersonTableViewCell/PersonTableViewCell.swift; sourceTree = "<group>"; };
+		8B74E6941CDE887B008985CC /* PersonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonTableViewCell.xib; path = Views/Cell/PersonTableViewCell/PersonTableViewCell.xib; sourceTree = "<group>"; };
 		ECAE02C2818E67504ACE3D17 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 		FC53FF69F23E231198EC1380 /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,12 +119,12 @@
 		8B4A97A51CDB3334007F3439 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8B4A97CA1CDB3447007F3439 /* Person.swift */,
-				8B4A97C71CDB3447007F3439 /* Employee.swift */,
-				8B4A97C61CDB3447007F3439 /* Accountant.swift */,
-				8B4A97C81CDB3447007F3439 /* FellowWorker.swift */,
-				8B4A97C91CDB3447007F3439 /* Leadership.swift */,
 				8B4A97D21CDB3581007F3439 /* Model.xcdatamodeld */,
+				8B74E6801CDE817D008985CC /* Person.swift */,
+				8B74E6841CDE81CB008985CC /* Employee.swift */,
+				8B74E6881CDE8208008985CC /* Accountant.swift */,
+				8B74E68C1CDE8225008985CC /* FellowWorker.swift */,
+				8B74E6901CDE8243008985CC /* Leadership.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -112,6 +132,7 @@
 		8B4A97A61CDB334A007F3439 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8B74E6611CDE6A67008985CC /* Cell */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -119,6 +140,10 @@
 		8B4A97A71CDB3359007F3439 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B4A97E01CDB4BA8007F3439 /* Service */,
+				8B4A97DF1CDB4B23007F3439 /* Gallery */,
+				8B4A97DE1CDB4B19007F3439 /* List */,
+				8B4A97D51CDB39C5007F3439 /* TabBar */,
 				8B4A97B11CDB33E7007F3439 /* Main */,
 				8B4A97A81CDB3388007F3439 /* Loading */,
 			);
@@ -141,6 +166,59 @@
 				8B4A97B71CDB3412007F3439 /* MainViewController.xib */,
 			);
 			name = Main;
+			sourceTree = "<group>";
+		};
+		8B4A97D51CDB39C5007F3439 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				8B4A97DA1CDB4444007F3439 /* MainTabViewController.swift */,
+				8B4A97DB1CDB4444007F3439 /* MainTabViewController.xib */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
+		8B4A97DE1CDB4B19007F3439 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				8B4A97E91CDB4C4B007F3439 /* PersonTableViewController.swift */,
+				8B4A97EA1CDB4C4B007F3439 /* PersonTableViewController.xib */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		8B4A97DF1CDB4B23007F3439 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				8B4A97E11CDB4BFE007F3439 /* GalleryViewController.swift */,
+				8B4A97E21CDB4BFE007F3439 /* GalleryViewController.xib */,
+			);
+			name = Gallery;
+			sourceTree = "<group>";
+		};
+		8B4A97E01CDB4BA8007F3439 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8B4A97E51CDB4C1D007F3439 /* ServiceViewController.swift */,
+				8B4A97E61CDB4C1D007F3439 /* ServiceViewController.xib */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		8B74E6611CDE6A67008985CC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8B74E6621CDE6A70008985CC /* PersonTableViewCell */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		8B74E6621CDE6A70008985CC /* PersonTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8B74E6931CDE887B008985CC /* PersonTableViewCell.swift */,
+				8B74E6941CDE887B008985CC /* PersonTableViewCell.xib */,
+			);
+			name = PersonTableViewCell;
 			sourceTree = "<group>";
 		};
 		B656146BA994E6664879510D /* Pods */ = {
@@ -214,9 +292,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B4A97B01CDB33E4007F3439 /* LoadingViewController.xib in Resources */,
+				8B4A97E81CDB4C1D007F3439 /* ServiceViewController.xib in Resources */,
+				8B74E6961CDE887B008985CC /* PersonTableViewCell.xib in Resources */,
+				8B4A97E41CDB4BFE007F3439 /* GalleryViewController.xib in Resources */,
 				8B4A979E1CDB3259007F3439 /* LaunchScreen.storyboard in Resources */,
+				8B4A97EC1CDB4C4B007F3439 /* PersonTableViewController.xib in Resources */,
 				8B4A979B1CDB3259007F3439 /* Assets.xcassets in Resources */,
 				8B4A97B91CDB3412007F3439 /* MainViewController.xib in Resources */,
+				8B4A97DD1CDB4444007F3439 /* MainTabViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +348,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -275,15 +358,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B4A97CF1CDB3447007F3439 /* Leadership.swift in Sources */,
+				8B4A97E31CDB4BFE007F3439 /* GalleryViewController.swift in Sources */,
+				8B74E68E1CDE8225008985CC /* FellowWorker.swift in Sources */,
+				8B4A97E71CDB4C1D007F3439 /* ServiceViewController.swift in Sources */,
 				8B4A97B81CDB3412007F3439 /* MainViewController.swift in Sources */,
+				8B74E68A1CDE8208008985CC /* Accountant.swift in Sources */,
+				8B4A97EB1CDB4C4B007F3439 /* PersonTableViewController.swift in Sources */,
+				8B74E6821CDE817D008985CC /* Person.swift in Sources */,
 				8B4A97941CDB3259007F3439 /* AppDelegate.swift in Sources */,
-				8B4A97CE1CDB3447007F3439 /* FellowWorker.swift in Sources */,
+				8B74E6861CDE81CB008985CC /* Employee.swift in Sources */,
+				8B74E6921CDE8243008985CC /* Leadership.swift in Sources */,
 				8B4A97AF1CDB33E4007F3439 /* LoadingViewController.swift in Sources */,
+				8B4A97DC1CDB4444007F3439 /* MainTabViewController.swift in Sources */,
+				8B74E6951CDE887B008985CC /* PersonTableViewCell.swift in Sources */,
 				8B4A97D41CDB3581007F3439 /* Model.xcdatamodeld in Sources */,
-				8B4A97CD1CDB3447007F3439 /* Employee.swift in Sources */,
-				8B4A97D01CDB3447007F3439 /* Person.swift in Sources */,
-				8B4A97CC1CDB3447007F3439 /* Accountant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

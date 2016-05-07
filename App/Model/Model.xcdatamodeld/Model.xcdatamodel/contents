@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
-    <entity name="Accountant" parentEntity="Employee" syncable="YES">
+    <entity name="Accountant" representedClassName=".Accountant" parentEntity="Employee" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Employee" isAbstract="YES" parentEntity="Person" syncable="YES">
+    <entity name="Employee" representedClassName=".Employee" parentEntity="Person" syncable="YES">
         <attribute name="beginLunchTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="endLunchTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="workplace" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="FellowWorker" parentEntity="Employee" syncable="YES"/>
-    <entity name="Leadership" parentEntity="Person" syncable="YES">
+    <entity name="FellowWorker" representedClassName=".FellowWorker" parentEntity="Employee" syncable="YES"/>
+    <entity name="Leadership" representedClassName=".Leadership" parentEntity="Person" syncable="YES">
         <attribute name="beginBusinessHours" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="endBusinessHours" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
-    <entity name="Person" isAbstract="YES" syncable="YES">
+    <entity name="Person" representedClassName=".Person" syncable="YES">
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="salary" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="Test" representedClassName=".Test" syncable="YES">
+        <attribute name="test" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Person" positionX="-18" positionY="27" width="128" height="30"/>
-        <element name="Employee" positionX="36" positionY="81" width="128" height="30"/>
         <element name="Accountant" positionX="9" positionY="54" width="128" height="30"/>
-        <element name="FellowWorker" positionX="18" positionY="63" width="128" height="30"/>
-        <element name="Leadership" positionX="27" positionY="72" width="128" height="30"/>
+        <element name="Employee" positionX="36" positionY="81" width="128" height="88"/>
+        <element name="FellowWorker" positionX="-90" positionY="27" width="128" height="30"/>
+        <element name="Leadership" positionX="-216" positionY="18" width="128" height="30"/>
+        <element name="Person" positionX="-11" positionY="-243" width="128" height="73"/>
+        <element name="Test" positionX="-360" positionY="-279" width="128" height="58"/>
     </elements>
 </model>
