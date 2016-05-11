@@ -1,31 +1,68 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="Accountant" representedClassName=".Accountant" parentEntity="Employee" syncable="YES">
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="description" value="Type"/>
+                <entry key="order" value="301"/>
+            </userInfo>
+        </attribute>
     </entity>
     <entity name="Employee" representedClassName=".Employee" parentEntity="Person" syncable="YES">
-        <attribute name="beginLunchTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="endLunchTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="workplace" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="beginLunchTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="description" value="Begin lunch time"/>
+                <entry key="order" value="202"/>
+            </userInfo>
+        </attribute>
+        <attribute name="endLunchTime" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="description" value="End lunch time"/>
+                <entry key="order" value="203"/>
+            </userInfo>
+        </attribute>
+        <attribute name="workplace" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="description" value="Workplace"/>
+                <entry key="order" value="201"/>
+            </userInfo>
+        </attribute>
     </entity>
     <entity name="FellowWorker" representedClassName=".FellowWorker" parentEntity="Employee" syncable="YES"/>
     <entity name="Leadership" representedClassName=".Leadership" parentEntity="Person" syncable="YES">
-        <attribute name="beginBusinessHours" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="endBusinessHours" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="beginBusinessHours" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="description" value="Begin business hours"/>
+                <entry key="order" value="201"/>
+            </userInfo>
+        </attribute>
+        <attribute name="endBusinessHours" optional="YES" attributeType="Date" syncable="YES">
+            <userInfo>
+                <entry key="description" value="End business hours"/>
+                <entry key="order" value="202"/>
+            </userInfo>
+        </attribute>
     </entity>
     <entity name="Person" representedClassName=".Person" syncable="YES">
-        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="salary" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-    </entity>
-    <entity name="Test" representedClassName=".Test" syncable="YES">
-        <attribute name="test" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="description" value="Full name"/>
+                <entry key="order" value="101"/>
+            </userInfo>
+        </attribute>
+        <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="salary" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="description" value="Salary"/>
+                <entry key="order" value="102"/>
+            </userInfo>
+        </attribute>
     </entity>
     <elements>
-        <element name="Accountant" positionX="9" positionY="54" width="128" height="30"/>
-        <element name="Employee" positionX="36" positionY="81" width="128" height="88"/>
-        <element name="FellowWorker" positionX="-90" positionY="27" width="128" height="30"/>
-        <element name="Leadership" positionX="-216" positionY="18" width="128" height="30"/>
-        <element name="Person" positionX="-11" positionY="-243" width="128" height="73"/>
-        <element name="Test" positionX="-360" positionY="-279" width="128" height="58"/>
+        <element name="Accountant" positionX="9" positionY="54" width="128" height="60"/>
+        <element name="Employee" positionX="36" positionY="81" width="128" height="90"/>
+        <element name="FellowWorker" positionX="-90" positionY="27" width="128" height="45"/>
+        <element name="Leadership" positionX="-216" positionY="18" width="128" height="75"/>
+        <element name="Person" positionX="-11" positionY="-243" width="128" height="90"/>
     </elements>
 </model>

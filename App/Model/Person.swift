@@ -12,10 +12,19 @@ import BNRCoreDataStack
 
 class Person: NSManagedObject, CoreDataModelable {
     @NSManaged var fullName: String?
-    @NSManaged var salary: NSNumber?
+    @NSManaged var salary: Int
+    @NSManaged var order: Int
     
     // MARK: - CoreDataModelable
     class var entityName: String {
         return "Person"
+    }
+    
+    func getKeyForData(childKeys: [String]) -> [String] {
+        var array = [String]()
+        array.append("fullName")
+        array.append("salary")
+        array.appendContentsOf(childKeys)
+        return array
     }
 }

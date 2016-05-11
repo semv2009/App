@@ -26,8 +26,8 @@ class MainTabViewController: UITabBarController {
         super.viewDidLoad()
         
         let listController = UINavigationController(rootViewController: PersonTableViewController(coreDataStack: stack))
-        let galleryController = GalleryViewController()
-        let serviceController = ServiceViewController()
+        let galleryController = UINavigationController(rootViewController: GalleryViewController())
+        let serviceController = UINavigationController(rootViewController: ServiceViewController())
         let controllers = [listController, galleryController, serviceController]
         viewControllers = controllers
         

@@ -19,4 +19,11 @@ class Leadership: Person {
         return "Leadership"
     }
 
+    func getKeyForData() -> [String] {
+        var array = [String]()
+        array.append("beginBusinessHours")
+        array.append("endBusinessHours")
+        return super.getKeyForData(array)
+    }
+
 }

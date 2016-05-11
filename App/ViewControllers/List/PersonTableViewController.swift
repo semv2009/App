@@ -19,8 +19,9 @@ class PersonTableViewController: UITableViewController {
         
         let nameSortDescriptor = NSSortDescriptor(key: "fullName", ascending:  true)
         let sectionSortDescriptor = NSSortDescriptor(key: "entity.name", ascending:  true)
+        let orderSortDescriptor = NSSortDescriptor(key: "order", ascending:  true)
         
-        fetchRequest.sortDescriptors = [sectionSortDescriptor, nameSortDescriptor]
+        fetchRequest.sortDescriptors = [sectionSortDescriptor, orderSortDescriptor, nameSortDescriptor]
         
         let frc = FetchedResultsController<Person>(fetchRequest: fetchRequest, managedObjectContext: self.stack.mainQueueContext, sectionNameKeyPath: "entity.name")
         
@@ -46,14 +47,25 @@ class PersonTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "List"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PersonTableViewController.showCreatePersonViewController))
         tableView.registerNib(UINib(nibName: "PersonTableViewCell", bundle: nil), forCellReuseIdentifier: "PersonCell")
+        tableView.sectionHeaderHeight = 48.0
         navigationItem.leftBarButtonItem = editButtonItem()
         do {
             try fetchedResultsController.performFetch()
         } catch {
             print("Failed to fetch objects: \(error)")
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    func showCreatePersonViewController() {
+        let createVC = CreatePersonViewController(coreDataStack: stack)
+        showViewController(UINavigationController(rootViewController: createVC), sender: self)
     }
 
     // MARK: - Table view data source
@@ -68,19 +80,14 @@ class PersonTableViewController: UITableViewController {
         return fetchedResultsController.sections?[section].objects.count ?? 0
     }
     
-//    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        
-//        var myCustomView: UIImageView
-//        var myImage: UIImage = UIImage(imageLiteral: "trumpet")
-//        myCustomView = UIImageView(image: myImage)
-//        let myLabel = UILabel()
-//        myLabel.text =  "Good"
-//         let header = UIView()
-//             print("good")
-//            header.addSubview(myCustomView)
-//            header.addSubview(<#T##view: UIView##UIView#>)
-//            return header
-//    }
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if let sections = fetchedResultsController.sections, name = sections[section].name {
+            let headerView = PersonHeaderView()
+            headerView.updateUI(name)
+            return headerView
+        }
+        return nil
+    }
     
 
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -105,28 +112,34 @@ class PersonTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
             guard let person = fetchedResultsController.getObject(indexPath) as? Person else { fatalError("Don't get task from fetchedResultsController") }
-            self.stack.mainQueueContext.deleteObject(person)
-            
+            if let section = fetchedResultsController.sections?[indexPath.section] {
+                let toIndexPath = NSIndexPath(forItem: section.objects.count - 1, inSection: indexPath.section)
+                fetchedResultsController.changeOrderPersons(moveRowAtIndexPath: indexPath, toIndexPath:  toIndexPath)
+                self.stack.mainQueueContext.deleteObject(person)
+            }
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-//        var itemToMove = tableData[fromIndexPath.row]
-//        tableData.removeAtIndex(fromIndexPath.row)
-//        tableData.insert(itemToMove, atIndex: toIndexPath.row)
+        fetchedResultsController.changeOrderPersons(moveRowAtIndexPath: fromIndexPath, toIndexPath: toIndexPath)
+        tableView.reloadData()
     }
     
-}
-
-extension FetchedResultsController {
-    func getObject(indexPath: NSIndexPath) -> NSManagedObject {
-        guard let sections = self.sections else { fatalError("Don't get sessions from fetchedResultsController") }
-        return sections[indexPath.section].objects[indexPath.row]
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        if self.tableView.editing {return .Delete}
+        return .None
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let person = fetchedResultsController.getObject(indexPath)
+        let createVC = CreatePersonViewController(coreDataStack: stack)
+        createVC.person = person
+        showViewController(UINavigationController(rootViewController: createVC), sender: self)
+    }
+    
 }
 
 class PersonsFetchedResultsControllerDelegate: FetchedResultsControllerDelegate {
@@ -155,6 +168,12 @@ class PersonsFetchedResultsControllerDelegate: FetchedResultsControllerDelegate 
                                   didChangeObject change: FetchedResultsObjectChange<Person>) {
         switch change {
         case let .Insert(_, indexPath):
+            if let person = controller.getObject(indexPath) as? Person, section = controller.sections {
+                person.order = section[indexPath.section].objects.count - 1
+            }
+            for per in controller.sections![indexPath.section].objects {
+                print(per.order)
+            }
             tableView?.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             
         case let .Delete(_, indexPath):

@@ -17,4 +17,10 @@ class Accountant: Employee {
     override class var entityName: String {
         return "Accountant"
     }
+    
+    func getKeyForData() -> [String] {
+        var array = [String]()
+        array.append("type")
+        return super.getKeyForData(array)
+    }
 }

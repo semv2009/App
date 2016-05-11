@@ -9,7 +9,7 @@
 import UIKit
 
 class PersonTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     
     func updateUI(person: Person) {
