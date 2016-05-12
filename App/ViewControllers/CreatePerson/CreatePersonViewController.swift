@@ -49,6 +49,7 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
             attributes = person.getAttributes()
         } else {
             title = "Create profile"
+            person = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
             newPerson = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
             if let newPerson = newPerson {
                 attributes = newPerson.getAttributes()

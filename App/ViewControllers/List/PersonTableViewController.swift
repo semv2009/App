@@ -170,7 +170,11 @@ class PersonsFetchedResultsControllerDelegate: FetchedResultsControllerDelegate 
         case let .Insert(_, indexPath):
             if let person = controller.getObject(indexPath) as? Person, section = controller.sections {
                 person.order = section[indexPath.section].objects.count - 1
+                for index in 0...(controller.sections?.count)! - 1 {
+                    print(section[index].objects.count)
+                }
             }
+            
             for per in controller.sections![indexPath.section].objects {
                 print(per.order)
             }
