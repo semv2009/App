@@ -17,9 +17,11 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     var newPerson: NSManagedObject?
     
     var doneButton: UIBarButtonItem!
-    var stack: CoreDataStack!
+    var stack: CoreDataStack
     
     var attributes = [AttributeInfo]()
+    
+    var delegate: ShowPersonDelegate?
     
     override func viewDidLoad() {
        super.viewDidLoad()
@@ -89,26 +91,30 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     }
     
     @objc private func done() {
-        if let newPerson = newPerson {
-            for cell in tableView.visibleCells {
-                if let personCell = cell as? DataTableViewCell {
-                     newPerson.setValue(personCell.value, forKey: personCell.attribute.name)
-                }
-            }
-            if let person = person {
-                self.stack.mainQueueContext.deleteObject(person)
-            }
-            
-        } else {
-            if let person = person {
+        if checkAllTextField() {
+            if let newPerson = newPerson {
                 for cell in tableView.visibleCells {
                     if let personCell = cell as? DataTableViewCell {
-                        person.setValue(personCell.value, forKey: personCell.attribute.name)
+                        newPerson.setValue(personCell.value, forKey: personCell.attribute.name)
+                        delegate?.person = newPerson
+                    }
+                }
+                if let person = person {
+                    self.stack.mainQueueContext.deleteObject(person)
+                }
+                
+            } else {
+                if let person = person {
+                    for cell in tableView.visibleCells {
+                        if let personCell = cell as? DataTableViewCell {
+                            person.setValue(personCell.value, forKey: personCell.attribute.name)
+                            delegate?.person = person
+                        }
                     }
                 }
             }
+            dismissViewControllerAnimated(true, completion: nil)
         }
-        dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: -Segment controller action
@@ -153,13 +159,29 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
         }
     }
     
+    func checkAllTextField() -> Bool {
+        var count = 0
+        for cell in tableView.visibleCells {
+            if let personCell = cell as? DataTableViewCell {
+                count = count + personCell.checkEmptyValue()
+            }
+        }
+        if count > 0 {
+            let alert = UIAlertController(title: "Warning", message: "There are empty fields.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Okey", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return false
+        }
+        return true
+    }
+    
     // MARK: - Table view data source
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return  1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  attributes.count
+        return  attributes.count ?? 0
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -186,6 +208,7 @@ struct  AttributeInfo {
     var order: Int
     var description: String
     var type: TypeAttribute
+    var optional: Int
 }
 
 enum TypeAttribute: Int {

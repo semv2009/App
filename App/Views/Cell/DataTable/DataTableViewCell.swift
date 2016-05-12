@@ -22,7 +22,7 @@ class DataTableViewCell: UITableViewCell {
         self.attribute = attribute
         
         nameLabel.text = attribute.description
-        dataTextField.resignFirstResponder()
+        dataTextField.addTarget(self, action: #selector(DataTableViewCell.dataEditTextChanged(_:)), forControlEvents: .EditingChanged)
         
         switch attribute.type {
         case .Date:
@@ -50,8 +50,21 @@ class DataTableViewCell: UITableViewCell {
         }
     }
     
+    func checkEmptyValue() -> Int {
+        if attribute.optional == 0 {
+            if dataTextField.text?.characters.count == 0 {
+                dataTextField.backgroundColor = UIColor.redColor()
+                return 1
+            }
+        }
+        return 0
+    }
+    
+    func dataEditTextChanged(sender: UITextField) {
+        sender.backgroundColor = UIColor.whiteColor()
+    }
+    
     func datePickerChanged(sender: UIDatePicker) {
-        print(datePiсker.date.getTimeFormat())
         dataTextField.text = datePiсker.date.getTimeFormat()
     }
     
@@ -74,4 +87,5 @@ class DataTableViewCell: UITableViewCell {
             return dataTextField.text
         }
     }
+
 }
