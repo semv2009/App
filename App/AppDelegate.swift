@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 assertionFailure("\(error)")
             }
         }
-        
+        print()
         window?.makeKeyAndVisible()
         return true
     }
