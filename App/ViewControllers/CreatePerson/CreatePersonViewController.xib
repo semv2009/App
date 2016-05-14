@@ -24,21 +24,20 @@
                         <segment title="Leadership"/>
                         <segment title="Accountant"/>
                     </segments>
-                    <color key="tintColor" red="0.98348861710000002" green="0.95207088360000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="changeValueSegmentController:" destination="-1" eventType="valueChanged" id="WI5-Zl-oXS"/>
                     </connections>
                 </segmentedControl>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zqc-aE-6kC">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" allowsSelection="NO" rowHeight="45" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zqc-aE-6kC">
                     <rect key="frame" x="0.0" y="44" width="600" height="556"/>
-                    <color key="backgroundColor" red="0.21540763739999999" green="0.4754186742" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="tJg-Wd-552"/>
                         <outlet property="delegate" destination="-1" id="L9V-VJ-3Yz"/>
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.21540763741608016" green="0.47541867416688388" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="rcE-ur-7aV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="6Qo-XC-a5J"/>
                 <constraint firstItem="Zqc-aE-6kC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="CIQ-2w-1FN"/>

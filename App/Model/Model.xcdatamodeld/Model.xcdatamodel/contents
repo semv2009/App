@@ -21,7 +21,7 @@
                 <entry key="order" value="203"/>
             </userInfo>
         </attribute>
-        <attribute name="workplace" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES">
+        <attribute name="workplace" optional="YES" attributeType="Integer 64" syncable="YES">
             <userInfo>
                 <entry key="description" value="Workplace"/>
                 <entry key="order" value="201"/>
@@ -51,7 +51,7 @@
             </userInfo>
         </attribute>
         <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="salary" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES">
+        <attribute name="salary" optional="YES" attributeType="Integer 64" syncable="YES">
             <userInfo>
                 <entry key="description" value="Salary"/>
                 <entry key="order" value="102"/>
