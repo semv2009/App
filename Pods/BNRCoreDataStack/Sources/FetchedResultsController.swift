@@ -240,7 +240,6 @@ private extension FetchedResultsObjectChange {
 
         case let (.Move, fromIndexPath?, toIndexPath?):
             self = .Move(object: object, fromIndexPath: fromIndexPath, toIndexPath: toIndexPath)
-
         default:
             preconditionFailure("Invalid change. Missing a required index path for corresponding change type.")
         }

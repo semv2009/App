@@ -23,8 +23,8 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
        super.viewDidLoad()
-        configureSegmentedControl(person)
         configureView()
+        configureSegmentedControl(person)
         createBarButtons()
         
         // Do any additional setup after loading the view.
@@ -34,6 +34,7 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
         self.stack = stack
         super.init(nibName: nil, bundle: nil)
     }
+    var delegate: DeletePerson!
     
     required init?(coder aDecoder: NSCoder) {
         preconditionFailure("init(coder:) has not been implemented")
@@ -51,8 +52,8 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
             title = "Create profile"
             person = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
             newPerson = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
-            if let newPerson = newPerson {
-                attributes = newPerson.getAttributes()
+            if let person = person {
+                attributes = person.getAttributes()
             }
         }
     }
@@ -91,14 +92,22 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     
     @objc private func done() {
         if let newPerson = newPerson {
+            if let person = person {
+                //self.stack.mainQueueContext.deleteObject(person)
+                if let delegate = delegate {
+                    print("Set delegate")
+                    delegate.deletePerson(person)
+                }
+                
+                
+            }
             for cell in tableView.visibleCells {
                 if let personCell = cell as? DataTableViewCell {
                      newPerson.setValue(personCell.value, forKey: personCell.attribute.name)
                 }
             }
-            if let person = person {
-                self.stack.mainQueueContext.deleteObject(person)
-            }
+            self.stack.mainQueueContext.insertObject(newPerson)
+            
             
         } else {
             if let person = person {
@@ -107,6 +116,7 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
                         person.setValue(personCell.value, forKey: personCell.attribute.name)
                     }
                 }
+                self.stack.mainQueueContext.insertObject(person)
             }
         }
         dismissViewControllerAnimated(true, completion: nil)
@@ -131,25 +141,29 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
         }
         
         if let lastPerson = lastPerson {
+            var nperson: NSManagedObject?
+            
             switch nameEntity {
             case Accountant.entityName:
-                newPerson = Accountant(managedObjectContext: self.stack.mainQueueContext)
-                newPerson?.copyData(lastPerson)
-                self.attributes = newPerson!.getAttributes()
+                nperson = Accountant(managedObjectContext: self.stack.mainQueueContext)
+                //nperson!.copyData(lastPerson)
+                self.attributes = nperson!.getAttributes()
             case Leadership.entityName:
-                newPerson = Leadership(managedObjectContext: self.stack.mainQueueContext)
-                newPerson?.copyData(lastPerson)
-                self.attributes = newPerson!.getAttributes()
+                nperson = Leadership(managedObjectContext: self.stack.mainQueueContext)
+                //nperson!.copyData(lastPerson)
+                self.attributes = nperson!.getAttributes()
             case FellowWorker.entityName:
-                newPerson = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
-                newPerson?.copyData(lastPerson)
-                self.attributes = newPerson!.getAttributes()
+                nperson = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
+                //nperson!.copyData(lastPerson)
+                self.attributes = nperson!.getAttributes()
             default:
                 break
             }
             if lastPerson != self.person {
                 self.stack.mainQueueContext.deleteObject(lastPerson)
             }
+            
+            self.newPerson = nperson
             tableView.reloadData()
         }
     }
