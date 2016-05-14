@@ -13,53 +13,76 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var personSegmentedControl: UISegmentedControl!
     
-    var person: NSManagedObject?
-    var newPerson: NSManagedObject?
+    weak var person: NSManagedObject?
+    weak var newPerson: NSManagedObject?
     
     var doneButton: UIBarButtonItem!
     var stack: CoreDataStack!
     
     var attributes = [AttributeInfo]()
     
+    var delegate: DeleteDelegate?
+    
     override func viewDidLoad() {
-       super.viewDidLoad()
-        configureView()
+        super.viewDidLoad()
         configureSegmentedControl(person)
+        configureView()
         createBarButtons()
         
         // Do any additional setup after loading the view.
     }
-
+    
     init(coreDataStack stack: CoreDataStack) {
         self.stack = stack
         super.init(nibName: nil, bundle: nil)
     }
-    var delegate: DeletePerson!
     
     required init?(coder aDecoder: NSCoder) {
         preconditionFailure("init(coder:) has not been implemented")
     }
-
+    
     
     // MARK: Navigator
     func configureView() {
         tableView.delegate = self
         tableView.registerNib(UINib(nibName: "DataTableViewCell", bundle: nil), forCellReuseIdentifier: "DataCell")
-        if let person = person {
+        if let person = person, entity = person.entity.name {
             title = "Update profile"
-            attributes = person.getAttributes()
+            //fsdfdsfdsfs
+            switch entity {
+            case Accountant.entityName:
+                self.newPerson = Accountant(managedObjectContext: self.stack.mainQueueContext)
+                if let newPerson = self.newPerson {
+                    newPerson.copyData(person)
+                }
+            case Leadership.entityName:
+                self.newPerson = Leadership(managedObjectContext: self.stack.mainQueueContext)
+                if let newPerson = self.newPerson {
+                    newPerson.copyData(person)
+                }
+            case FellowWorker.entityName:
+                self.newPerson = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
+                if let newPerson = self.newPerson {
+                    newPerson.copyData(person)
+                }
+            default:
+                break
+            }
+            
+            attributes = newPerson!.getAttributes()
         } else {
             title = "Create profile"
-            person = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
             newPerson = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
-            if let person = person {
-                attributes = person.getAttributes()
+            if let newPerson = newPerson {
+                attributes = newPerson.getAttributes()
             }
         }
     }
     
     
     func configureSegmentedControl(person: NSManagedObject?) {
+        
+        
         if let person = person, entity = person.entity.name {
             switch entity {
             case Accountant.entityName:
@@ -69,10 +92,10 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
             case FellowWorker.entityName:
                 personSegmentedControl.selectedSegmentIndex = 0
             default:
-               break
+                break
             }
         }
-    
+        
     }
     
     func createBarButtons() {
@@ -92,22 +115,14 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     
     @objc private func done() {
         if let newPerson = newPerson {
-            if let person = person {
-                //self.stack.mainQueueContext.deleteObject(person)
-                if let delegate = delegate {
-                    print("Set delegate")
-                    delegate.deletePerson(person)
-                }
-                
-                
-            }
             for cell in tableView.visibleCells {
                 if let personCell = cell as? DataTableViewCell {
-                     newPerson.setValue(personCell.value, forKey: personCell.attribute.name)
+                    newPerson.setValue(personCell.value, forKey: personCell.attribute.name)
                 }
             }
-            self.stack.mainQueueContext.insertObject(newPerson)
-            
+            if let person = person {
+                delegate?.deletePerson = person
+            }
             
         } else {
             if let person = person {
@@ -116,12 +131,12 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
                         person.setValue(personCell.value, forKey: personCell.attribute.name)
                     }
                 }
-                self.stack.mainQueueContext.insertObject(person)
             }
         }
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     // MARK: -Segment controller action
     
     @IBAction func changeValueSegmentController(sender: UISegmentedControl) {
@@ -134,36 +149,40 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     func updateTableView(nameEntity: String) {
         var lastPerson: NSManagedObject?
         
-        if let newPerson = newPerson {
-            lastPerson = newPerson
-        } else {
-            lastPerson = person
-        }
+        //        if let newPerson = newPerson {
+        //            lastPerson = newPerson
+        //        } else {
+        //            lastPerson = person
+        //        }
+        print(nameEntity)
         
-        if let lastPerson = lastPerson {
-            var nperson: NSManagedObject?
-            
+        if let newPerson = newPerson {
             switch nameEntity {
             case Accountant.entityName:
-                nperson = Accountant(managedObjectContext: self.stack.mainQueueContext)
-                //nperson!.copyData(lastPerson)
-                self.attributes = nperson!.getAttributes()
+                let selectPerson = Accountant(managedObjectContext: self.stack.mainQueueContext)
+                selectPerson.copyData(newPerson)
+                self.stack.mainQueueContext.deleteObject(newPerson)
+                self.newPerson = selectPerson
+                attributes = selectPerson.getAttributes()
             case Leadership.entityName:
-                nperson = Leadership(managedObjectContext: self.stack.mainQueueContext)
-                //nperson!.copyData(lastPerson)
-                self.attributes = nperson!.getAttributes()
+                print("Case Leadership")
+                let selectPerson = Leadership(managedObjectContext: self.stack.mainQueueContext)
+                selectPerson.copyData(newPerson)
+                self.stack.mainQueueContext.deleteObject(newPerson)
+                self.newPerson = selectPerson
+                attributes = selectPerson.getAttributes()
             case FellowWorker.entityName:
-                nperson = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
-                //nperson!.copyData(lastPerson)
-                self.attributes = nperson!.getAttributes()
+                let selectPerson = FellowWorker(managedObjectContext: self.stack.mainQueueContext)
+                selectPerson.copyData(newPerson)
+                self.stack.mainQueueContext.deleteObject(newPerson)
+                self.newPerson = selectPerson
+                attributes = selectPerson.getAttributes()
             default:
                 break
             }
-            if lastPerson != self.person {
-                self.stack.mainQueueContext.deleteObject(lastPerson)
-            }
             
-            self.newPerson = nperson
+            
+            
             tableView.reloadData()
         }
     }
@@ -178,18 +197,14 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        print("hello")
         guard let cell =  cell as? DataTableViewCell else { fatalError("Cell is not registered") }
         if let newPerson = newPerson {
             cell.updateUI(attributes[indexPath.row], person: newPerson)
-
-        } else {
-            if let person = person {
-                cell.updateUI(attributes[indexPath.row], person: person)
-            }
+            
         }
-        
     }
-
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let cell = (tableView.dequeueReusableCellWithIdentifier("DataCell", forIndexPath: indexPath)) as? DataTableViewCell else { fatalError("Cell is not registered") }
         return cell
