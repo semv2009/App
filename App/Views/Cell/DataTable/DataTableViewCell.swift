@@ -51,7 +51,6 @@ class DataTableViewCell: UITableViewCell {
     }
     
     func datePickerChanged(sender: UIDatePicker) {
-        print(datePiсker.date.getTimeFormat())
         dataTextField.text = datePiсker.date.getTimeFormat()
     }
     

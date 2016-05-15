@@ -21,15 +21,14 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     
     var attributes = [AttributeInfo]()
     
-    var delegate: DeleteDelegate?
+    var deleteDelegate: DeleteDelegate?
+    var showDelegate: ShowPersonDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSegmentedControl(person)
         configureView()
         createBarButtons()
-        
-        // Do any additional setup after loading the view.
     }
     
     init(coreDataStack stack: CoreDataStack) {
@@ -121,9 +120,9 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
                 }
             }
             if let person = person {
-                delegate?.deletePerson = person
+                deleteDelegate?.deletePerson.append(person)
             }
-            
+            showDelegate?.person = newPerson
         } else {
             if let person = person {
                 for cell in tableView.visibleCells {
@@ -131,6 +130,7 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
                         person.setValue(personCell.value, forKey: personCell.attribute.name)
                     }
                 }
+                showDelegate?.person = person
             }
         }
         
@@ -147,15 +147,6 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     }
     
     func updateTableView(nameEntity: String) {
-        var lastPerson: NSManagedObject?
-        
-        //        if let newPerson = newPerson {
-        //            lastPerson = newPerson
-        //        } else {
-        //            lastPerson = person
-        //        }
-        print(nameEntity)
-        
         if let newPerson = newPerson {
             switch nameEntity {
             case Accountant.entityName:
@@ -165,7 +156,6 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
                 self.newPerson = selectPerson
                 attributes = selectPerson.getAttributes()
             case Leadership.entityName:
-                print("Case Leadership")
                 let selectPerson = Leadership(managedObjectContext: self.stack.mainQueueContext)
                 selectPerson.copyData(newPerson)
                 self.stack.mainQueueContext.deleteObject(newPerson)
@@ -180,9 +170,6 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
             default:
                 break
             }
-            
-            
-            
             tableView.reloadData()
         }
     }
@@ -197,7 +184,6 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        print("hello")
         guard let cell =  cell as? DataTableViewCell else { fatalError("Cell is not registered") }
         if let newPerson = newPerson {
             cell.updateUI(attributes[indexPath.row], person: newPerson)

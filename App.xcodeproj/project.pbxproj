@@ -12,6 +12,10 @@
 		8B291FA91CE32F93000F5B0B /* PersonHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B291FA71CE32F93000F5B0B /* PersonHeaderView.xib */; };
 		8B291FAC1CE331A3000F5B0B /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B291FAA1CE331A3000F5B0B /* PersonTableViewCell.swift */; };
 		8B291FAD1CE331A3000F5B0B /* PersonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B291FAB1CE331A3000F5B0B /* PersonTableViewCell.xib */; };
+		8B3450961CE8CF36005777C9 /* DetailPersonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3450941CE8CF36005777C9 /* DetailPersonTableViewController.swift */; };
+		8B3450971CE8CF36005777C9 /* DetailPersonTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B3450951CE8CF36005777C9 /* DetailPersonTableViewController.xib */; };
+		8B34509B1CE8CFE7005777C9 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3450991CE8CFE7005777C9 /* DetailTableViewCell.swift */; };
+		8B34509C1CE8CFE7005777C9 /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B34509A1CE8CFE7005777C9 /* DetailTableViewCell.xib */; };
 		8B39C8FC1CE205940046D369 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B39C8FA1CE205940046D369 /* DataTableViewCell.swift */; };
 		8B39C8FD1CE205940046D369 /* DataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B39C8FB1CE205940046D369 /* DataTableViewCell.xib */; };
 		8B39C9031CE205C60046D369 /* NSDate+StringRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B39C9021CE205C60046D369 /* NSDate+StringRepresentation.swift */; };
@@ -49,6 +53,10 @@
 		8B291FA71CE32F93000F5B0B /* PersonHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonHeaderView.xib; path = Views/PersonHeader/PersonHeaderView.xib; sourceTree = "<group>"; };
 		8B291FAA1CE331A3000F5B0B /* PersonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonTableViewCell.swift; path = Views/Cell/PersonTable/PersonTableViewCell.swift; sourceTree = "<group>"; };
 		8B291FAB1CE331A3000F5B0B /* PersonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PersonTableViewCell.xib; path = Views/Cell/PersonTable/PersonTableViewCell.xib; sourceTree = "<group>"; };
+		8B3450941CE8CF36005777C9 /* DetailPersonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailPersonTableViewController.swift; path = ViewControllers/DetailPerson/DetailPersonTableViewController.swift; sourceTree = "<group>"; };
+		8B3450951CE8CF36005777C9 /* DetailPersonTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DetailPersonTableViewController.xib; path = ViewControllers/DetailPerson/DetailPersonTableViewController.xib; sourceTree = "<group>"; };
+		8B3450991CE8CFE7005777C9 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		8B34509A1CE8CFE7005777C9 /* DetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
 		8B39C8FA1CE205940046D369 /* DataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataTableViewCell.swift; path = Views/Cell/DataTable/DataTableViewCell.swift; sourceTree = "<group>"; };
 		8B39C8FB1CE205940046D369 /* DataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DataTableViewCell.xib; path = Views/Cell/DataTable/DataTableViewCell.xib; sourceTree = "<group>"; };
 		8B39C9021CE205C60046D369 /* NSDate+StringRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+StringRepresentation.swift"; path = "Extension/NSDate+StringRepresentation.swift"; sourceTree = "<group>"; };
@@ -109,6 +117,24 @@
 				8B291FA71CE32F93000F5B0B /* PersonHeaderView.xib */,
 			);
 			name = PersonHeader;
+			sourceTree = "<group>";
+		};
+		8B3450931CE8CEAC005777C9 /* DetailPerson */ = {
+			isa = PBXGroup;
+			children = (
+				8B3450941CE8CF36005777C9 /* DetailPersonTableViewController.swift */,
+				8B3450951CE8CF36005777C9 /* DetailPersonTableViewController.xib */,
+			);
+			name = DetailPerson;
+			sourceTree = "<group>";
+		};
+		8B3450981CE8CFBD005777C9 /* DetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				8B3450991CE8CFE7005777C9 /* DetailTableViewCell.swift */,
+				8B34509A1CE8CFE7005777C9 /* DetailTableViewCell.xib */,
+			);
+			name = DetailCell;
 			sourceTree = "<group>";
 		};
 		8B39C8F71CE204FF0046D369 /* Extension */ = {
@@ -197,6 +223,7 @@
 		8B4A97A71CDB3359007F3439 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8B3450931CE8CEAC005777C9 /* DetailPerson */,
 				8B45AECF1CDFD96700F01815 /* CreatePerson */,
 				8B4A97E01CDB4BA8007F3439 /* Service */,
 				8B4A97DF1CDB4B23007F3439 /* Gallery */,
@@ -265,6 +292,7 @@
 		8B74E6611CDE6A67008985CC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				8B3450981CE8CFBD005777C9 /* DetailCell */,
 				8B45AEDC1CDFE19E00F01815 /* DataTable */,
 				8B74E6621CDE6A70008985CC /* PersonTable */,
 			);
@@ -356,9 +384,11 @@
 				8B39C8FD1CE205940046D369 /* DataTableViewCell.xib in Resources */,
 				8B45AEE01CDFE1F300F01815 /* CreatePersonViewController.xib in Resources */,
 				8B291FA91CE32F93000F5B0B /* PersonHeaderView.xib in Resources */,
+				8B34509C1CE8CFE7005777C9 /* DetailTableViewCell.xib in Resources */,
 				8B4A97E41CDB4BFE007F3439 /* GalleryViewController.xib in Resources */,
 				8B4A979E1CDB3259007F3439 /* LaunchScreen.storyboard in Resources */,
 				8B4A97EC1CDB4C4B007F3439 /* PersonTableViewController.xib in Resources */,
+				8B3450971CE8CF36005777C9 /* DetailPersonTableViewController.xib in Resources */,
 				8B4A979B1CDB3259007F3439 /* Assets.xcassets in Resources */,
 				8B4A97B91CDB3412007F3439 /* MainViewController.xib in Resources */,
 				8B4A97DD1CDB4444007F3439 /* MainTabViewController.xib in Resources */,
@@ -422,6 +452,7 @@
 			files = (
 				8B4A97E31CDB4BFE007F3439 /* GalleryViewController.swift in Sources */,
 				8B74E68E1CDE8225008985CC /* FellowWorker.swift in Sources */,
+				8B34509B1CE8CFE7005777C9 /* DetailTableViewCell.swift in Sources */,
 				8B291F9C1CE32224000F5B0B /* FetchedResultsController+PersonEntity.swift in Sources */,
 				8B4A97E71CDB4C1D007F3439 /* ServiceViewController.swift in Sources */,
 				8B291FA81CE32F93000F5B0B /* PersonHeaderView.swift in Sources */,
@@ -440,6 +471,7 @@
 				8B39C9031CE205C60046D369 /* NSDate+StringRepresentation.swift in Sources */,
 				8B291FAC1CE331A3000F5B0B /* PersonTableViewCell.swift in Sources */,
 				8B4A97D41CDB3581007F3439 /* Model.xcdatamodeld in Sources */,
+				8B3450961CE8CF36005777C9 /* DetailPersonTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

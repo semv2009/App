@@ -13,7 +13,7 @@ import CoreData
 class PersonTableViewController: UITableViewController, DeleteDelegate {
     
     var stack: CoreDataStack!
-    var deletePerson: NSManagedObject?
+    var deletePerson = [NSManagedObject?]()
     
     private lazy var fetchedResultsController: FetchedResultsController<Person> = {
         let fetchRequest = NSFetchRequest(entityName: Person.entityName)
@@ -61,8 +61,10 @@ class PersonTableViewController: UITableViewController, DeleteDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if let deletePerson = deletePerson {
-            self.stack.mainQueueContext.deleteObject(deletePerson)
+        for person in deletePerson {
+            if let person = person {
+                self.stack.mainQueueContext.deleteObject(person)
+            }
         }
         tableView.reloadData()
     }
@@ -139,10 +141,10 @@ class PersonTableViewController: UITableViewController, DeleteDelegate {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let person = fetchedResultsController.getObject(indexPath)
-        let createVC = CreatePersonViewController(coreDataStack: stack)
+        let createVC = DetailPersonTableViewController(coreDataStack: stack)
         createVC.person = person
-        createVC.delegate = self
-        showViewController(UINavigationController(rootViewController: createVC), sender: self)
+        createVC.deleteDelegate = self
+        showViewController(createVC, sender: self)
     }
     
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
@@ -208,5 +210,5 @@ class PersonsFetchedResultsControllerDelegate: FetchedResultsControllerDelegate 
 }
 
 protocol DeleteDelegate {
-    var deletePerson: NSManagedObject? { get set }
+    var deletePerson: [NSManagedObject?] { get set }
 }
