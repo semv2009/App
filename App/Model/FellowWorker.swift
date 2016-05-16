@@ -16,10 +16,4 @@ class FellowWorker: Employee {
     override class var entityName: String {
         return "FellowWorker"
     }
-    
-    func getKeyForData() -> [String] {
-        let array = [String]()
-        return super.getKeyForData(array)
-    }
-    
 }

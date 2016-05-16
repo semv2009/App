@@ -96,15 +96,13 @@ class PersonTableViewController: UITableViewController, DeleteDelegate {
     }
     
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard let cell =  cell as? PersonTableViewCell else { fatalError("Cell is not registered") }
-        if let person = fetchedResultsController.getObject(indexPath) as? Person {
-            cell.updateUI(person)
-        }
-    }
+   
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let cell = (tableView.dequeueReusableCellWithIdentifier("PersonCell", forIndexPath: indexPath)) as? PersonTableViewCell else { fatalError("Cell is not registered") }
+        if let person = fetchedResultsController.getObject(indexPath) as? Person {
+            cell.updateUI(person)
+        }
         return cell
     }
     

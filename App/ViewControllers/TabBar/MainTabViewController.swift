@@ -45,11 +45,6 @@ class MainTabViewController: UITabBarController {
             tag: 1)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         print("\(item.title)")
     }

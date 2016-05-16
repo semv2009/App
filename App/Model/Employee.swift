@@ -19,13 +19,4 @@ class Employee: Person {
     override class var entityName: String {
         return "Employee"
     }
-    
-    override func getKeyForData(childKeys: [String]) -> [String] {
-        var array = [String]()
-        array.append("beginLunchTime")
-        array.append("endLunchTime")
-        array.append("workplace")
-        array.appendContentsOf(childKeys)
-        return super.getKeyForData(array)
-    }
 }

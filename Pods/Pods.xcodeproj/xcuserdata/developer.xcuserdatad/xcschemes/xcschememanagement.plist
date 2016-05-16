@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AEXML.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,12 +27,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>14D877BCEE5AEF2A5B2BF0398EFF343C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>698733C4D35F57BFBAEEEF66B2C06C7F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7284518798F3C3961B1A2BFAADFEAD5B</key>
+		<key>6B9813D7E7E5E2BAC2903B82EC58E643</key>
 		<dict>
 			<key>primary</key>
 			<true/>

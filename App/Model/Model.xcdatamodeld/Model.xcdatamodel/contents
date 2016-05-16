@@ -3,57 +3,67 @@
     <entity name="Accountant" representedClassName=".Accountant" parentEntity="Employee" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
-                <entry key="description" value="Type"/>
+                <entry key="description" value="type"/>
                 <entry key="order" value="301"/>
             </userInfo>
         </attribute>
+        <userInfo>
+            <entry key="description" value="Accountant"/>
+        </userInfo>
     </entity>
     <entity name="Employee" representedClassName=".Employee" parentEntity="Person" syncable="YES">
         <attribute name="beginLunchTime" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
-                <entry key="description" value="Begin lunch time"/>
+                <entry key="description" value="begin lunch time"/>
                 <entry key="order" value="202"/>
             </userInfo>
         </attribute>
         <attribute name="endLunchTime" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
-                <entry key="description" value="End lunch time"/>
+                <entry key="description" value="end lunch time"/>
                 <entry key="order" value="203"/>
             </userInfo>
         </attribute>
         <attribute name="workplace" optional="YES" attributeType="Integer 64" syncable="YES">
             <userInfo>
-                <entry key="description" value="Workplace"/>
+                <entry key="description" value="workplace"/>
                 <entry key="order" value="201"/>
             </userInfo>
         </attribute>
     </entity>
-    <entity name="FellowWorker" representedClassName=".FellowWorker" parentEntity="Employee" syncable="YES"/>
+    <entity name="FellowWorker" representedClassName=".FellowWorker" parentEntity="Employee" syncable="YES">
+        <userInfo>
+            <entry key="description" value="Fellow Worker"/>
+        </userInfo>
+    </entity>
     <entity name="Leadership" representedClassName=".Leadership" parentEntity="Person" syncable="YES">
         <attribute name="beginBusinessHours" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
-                <entry key="description" value="Begin business hours"/>
+                <entry key="description" value="begin business hours"/>
                 <entry key="order" value="201"/>
             </userInfo>
         </attribute>
         <attribute name="endBusinessHours" optional="YES" attributeType="Date" syncable="YES">
             <userInfo>
-                <entry key="description" value="End business hours"/>
+                <entry key="description" value="end business hours"/>
                 <entry key="order" value="202"/>
             </userInfo>
         </attribute>
+        <userInfo>
+            <entry key="description" value="Leadership"/>
+        </userInfo>
     </entity>
     <entity name="Person" representedClassName=".Person" syncable="YES">
         <attribute name="fullName" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
-                <entry key="description" value="Full name"/>
+                <entry key="description" value="full name"/>
                 <entry key="order" value="101"/>
             </userInfo>
         </attribute>
         <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="salary" optional="YES" attributeType="Integer 64" syncable="YES">
             <userInfo>
-                <entry key="description" value="Salary"/>
+                <entry key="description" value="salary"/>
                 <entry key="order" value="102"/>
             </userInfo>
         </attribute>

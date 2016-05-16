@@ -6,5 +6,6 @@ use_frameworks!
 target 'App' do
 pod 'BNRCoreDataStack'
 pod 'Alamofire', '~> 3.3'
+pod 'AEXML'
 end
 

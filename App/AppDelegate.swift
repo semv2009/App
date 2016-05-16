@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch result {
             case .Success(let stack):
                 self.coreDataStack = stack
-                self.createDB()
                 dispatch_async(dispatch_get_main_queue()) {
                     let mainViewController = MainTabViewController(coreDataStack: self.coreDataStack!)
                     self.window?.rootViewController = mainViewController
@@ -36,38 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print()
         window?.makeKeyAndVisible()
         return true
-    }
-    
-    func createDB() {
-        let moc = coreDataStack!.newBackgroundWorkerMOC()
-        do {
-            try moc.performAndWaitOrThrow {
-//                let person =  Accountant(managedObjectContext: moc)
-//                person.fullName = "Accountant"
-//                person.salary = 99
-//                person.type = "Buy"
-//                person.beginLunchTime = NSDate()
-//                person.endLunchTime = NSDate()
-//                person.workplace = 46
-//                
-//                let person1 =  Leadership(managedObjectContext: moc)
-//                person1.fullName = "Leadership"
-//                person1.salary = 3434
-//                person1.beginBusinessHours = NSDate()
-//                person1.endBusinessHours = NSDate()
-//                
-//                let person2 =  FellowWorker(managedObjectContext: moc)
-//                person2.fullName = "FellowWorker"
-//                person2.salary = 43
-//                person2.beginLunchTime = NSDate()
-//                person2.endLunchTime = NSDate()
-//                person2.workplace = 46
-//                try moc.saveContextAndWait()
-            }
-        } catch {
-            print("Error creating inital data: \(error)")
-        }
-        
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
