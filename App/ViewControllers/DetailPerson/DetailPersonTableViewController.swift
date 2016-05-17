@@ -70,6 +70,7 @@ class DetailPersonTableViewController: UITableViewController, ShowPersonDelegate
     
     
     // MARK: - Table view data source
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return  1
     }

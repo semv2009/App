@@ -13,7 +13,7 @@ import CoreData
 class PersonTableViewController: UITableViewController, DeleteDelegate {
     
     var stack: CoreDataStack!
-    var deletePerson = [NSManagedObject?]()
+    var deletePersons = [NSManagedObject?]()
     
     private lazy var fetchedResultsController: FetchedResultsController<Person> = {
         let fetchRequest = NSFetchRequest(entityName: Person.entityName)
@@ -21,7 +21,7 @@ class PersonTableViewController: UITableViewController, DeleteDelegate {
         let nameSortDescriptor = NSSortDescriptor(key: "fullName", ascending:  true)
         let sectionSortDescriptor = NSSortDescriptor(key: "entity.name", ascending:  true)
         let orderSortDescriptor = NSSortDescriptor(key: "order", ascending:  true)
-        
+    
         fetchRequest.sortDescriptors = [sectionSortDescriptor, orderSortDescriptor, nameSortDescriptor]
         
         let frc = FetchedResultsController<Person>(fetchRequest: fetchRequest, managedObjectContext: self.stack.mainQueueContext, sectionNameKeyPath: "entity.name")
@@ -47,11 +47,7 @@ class PersonTableViewController: UITableViewController, DeleteDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "List"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PersonTableViewController.showCreatePersonViewController))
-        tableView.registerNib(UINib(nibName: "PersonTableViewCell", bundle: nil), forCellReuseIdentifier: "PersonCell")
-        tableView.sectionHeaderHeight = 48.0
-        navigationItem.leftBarButtonItem = editButtonItem()
+        configureView()
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -61,7 +57,7 @@ class PersonTableViewController: UITableViewController, DeleteDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        for person in deletePerson {
+        for person in deletePersons {
             if let person = person {
                 self.stack.mainQueueContext.deleteObject(person)
             }
@@ -69,17 +65,23 @@ class PersonTableViewController: UITableViewController, DeleteDelegate {
         tableView.reloadData()
     }
     
+    func configureView() {
+        title = "List"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(PersonTableViewController.showCreatePersonViewController))
+        tableView.registerNib(UINib(nibName: "PersonTableViewCell", bundle: nil), forCellReuseIdentifier: "PersonCell")
+        tableView.sectionHeaderHeight = 48.0
+        navigationItem.leftBarButtonItem = editButtonItem()
+    }
+    
     func showCreatePersonViewController() {
-        let createVC = CreatePersonViewController(coreDataStack: stack)
-        showViewController(UINavigationController(rootViewController: createVC), sender: self)
+        let createPersonVC = CreatePersonViewController(coreDataStack: stack)
+        showViewController(UINavigationController(rootViewController: createPersonVC), sender: self)
     }
     
     // MARK: - Table view data source
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
-    }
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return fetchedResultsController.sections?[section].name
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,9 +96,6 @@ class PersonTableViewController: UITableViewController, DeleteDelegate {
         }
         return nil
     }
-    
-    
-   
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let cell = (tableView.dequeueReusableCellWithIdentifier("PersonCell", forIndexPath: indexPath)) as? PersonTableViewCell else { fatalError("Cell is not registered") }
@@ -208,5 +207,5 @@ class PersonsFetchedResultsControllerDelegate: FetchedResultsControllerDelegate 
 }
 
 protocol DeleteDelegate {
-    var deletePerson: [NSManagedObject?] { get set }
+    var deletePersons: [NSManagedObject?] { get set }
 }

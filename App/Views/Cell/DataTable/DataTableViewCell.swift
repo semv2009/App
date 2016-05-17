@@ -14,13 +14,15 @@ class DataTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dataTextField: UITextField!
     
+
+    
     var attribute: AttributeInfo!
     
     var datePiсker = UIDatePicker()
     
     func updateUI(attribute: AttributeInfo, person: NSManagedObject) {
+
         self.attribute = attribute
-        
         nameLabel.text = attribute.description
         dataTextField.resignFirstResponder()
         
@@ -50,6 +52,12 @@ class DataTableViewCell: UITableViewCell {
         }
     }
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        print("HELLO")
+        
+        return true
+    }
+    
     func datePickerChanged(sender: UIDatePicker) {
         dataTextField.text = datePiсker.date.getTimeFormat()
     }
@@ -73,4 +81,6 @@ class DataTableViewCell: UITableViewCell {
             return dataTextField.text
         }
     }
+    
+    
 }

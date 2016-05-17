@@ -9,7 +9,7 @@
 import UIKit
 import BNRCoreDataStack
 
-class CreatePersonViewController: UIViewController, UITableViewDelegate {
+class CreatePersonViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var personSegmentedControl: UISegmentedControl!
     
@@ -120,7 +120,7 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
                 }
             }
             if let person = person {
-                deleteDelegate?.deletePerson.append(person)
+                deleteDelegate?.deletePersons.append(person)
             }
             showDelegate?.person = newPerson
         } else {
@@ -175,24 +175,17 @@ class CreatePersonViewController: UIViewController, UITableViewDelegate {
     }
     
     // MARK: - Table view data source
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return  1
-    }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  attributes.count
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard let cell =  cell as? DataTableViewCell else { fatalError("Cell is not registered") }
-        if let newPerson = newPerson {
-            cell.updateUI(attributes[indexPath.row], person: newPerson)
-            
-        }
-    }
-    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         guard let cell = (tableView.dequeueReusableCellWithIdentifier("DataCell", forIndexPath: indexPath)) as? DataTableViewCell else { fatalError("Cell is not registered") }
+        if let newPerson = newPerson {
+            cell.updateUI(attributes[indexPath.row], person: newPerson)
+            cell.dataTextField.delegate = self
+        }
         return cell
     }
 }
